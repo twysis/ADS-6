@@ -11,6 +11,7 @@ class TPQueue {
     while ((arr[i % size].prior < temp.prior) && (--i >= first)) {
       arr[(i + 1) % size] = arr[i % size];
     }
+    arr[(i + 1) % size] = temp;
   }
   T pop() {
     return arr[(first++) % size];
