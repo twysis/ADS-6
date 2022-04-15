@@ -5,13 +5,13 @@
 
 template<typename T, int size>
 class TPQueue {
- 
- private:
+
+  private:
    T arr[100];
    int first;
    int last;
 
- public:
+  public:
     TPQueue() : first(0), last(0) {}
     int getSize() {
       return last - first;
