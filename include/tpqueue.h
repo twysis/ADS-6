@@ -24,6 +24,12 @@ class TPQueue {
   T pop() {
     return arr[(first++) % size];
   }
+  T front() {
+    return arr[(first) % size];
+  }
+  T back() {
+    return arr[(last - 1) % size];
+  }
  private:
   T arr[100];
   int first, last;
