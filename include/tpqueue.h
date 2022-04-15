@@ -7,11 +7,11 @@ class TPQueue {
  public:
   TPQueue() : first(0), last(0) {}
   int getSize() {
-       return last - first;
-   }
+    return last - first;
+  }
   void push(T temporary) {
   if (getSize() >= size) {
-    throw std::string("full"); 
+    throw std::string("full");
   } else {
       int i = last++;
       while ((arr[i % size].prior < temporary.prior) && (--i >= first)) {
