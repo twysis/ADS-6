@@ -5,34 +5,37 @@
 
 template<typename T, int size>
 class TPQueue {
- public:
-  TPQueue() : first(0), last(0) {}
-  int getSize() {
-    return last - first;
-  }
-  void push(T temporary) {
-  if (getSize() >= size) {
-    throw std::string("full");
-  } else {
-      int i = last++;
-      while ((arr[i % size].prior < temporary.prior) && (--i >= first)) {
-        arr[(i + 1) % size] = arr[i % size];
-      }
-      arr[(i + 1) % size] = temporary;
-    }
-  }
-  T pop() {
-    return arr[(first++) % size];
-  }
-  T front() {
-    return arr[(first) % size];
-  }
-  T back() {
-    return arr[(last - 1) % size];
-  }
+ 
  private:
-  T arr[100];
-  int first, last;
+   T arr[100];
+   int first;
+   int last;
+
+ public:
+    TPQueue() : first(0), last(0) {}
+    int getSize() {
+      return last - first;
+    }
+    void push(T temporary) {
+      if (getSize() >= size) {
+        throw std::string("full"); // не работает
+      } else {
+          int i = last++;
+          while ((--i >= first) && (arr[i % size].prior < temporary.prior)) {
+            arr[(i + 1) % size] = arr[i % size];
+        }
+        arr[(i + 1) % size] = temporary;
+       }
+    }
+    T front() {
+        return arr[(first) % size];
+    }
+    T back() {
+        return arr[(last - 1) % size];
+    }
+    T pop() {
+        return arr[(first++) % size];
+    }
 };
 
 struct SYM {
